@@ -1,0 +1,29 @@
+{
+  "name": "angular-asciidoc-directive",
+  "version": "0.0.1",
+  "authors": [
+    "Anthonny Quérouil <anthonny.querouil@gmail.com>"
+  ],
+  "main": "dist/asciidoc.all.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "tmp",
+    "asciidoctorjs",
+    "src",
+    "README.md",
+    "karma.conf.js"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.13",
+    "angular-scenario": "1.2.6",
+    "angular-ui-ace": "bower"
+  }
+}
