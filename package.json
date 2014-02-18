@@ -1,7 +1,7 @@
 {
   "name": "angular-asciidoc-directive",
   "version": "0.0.1",
-  "description": "",
+  "description": "AngularJS directive for AsciiDoctor",
   "main": "asciidoc.js",
   "file": "asciidoc",
   "author": "Anthonny Quérouil (anthonny.querouil@gmail.com)",
