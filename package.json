@@ -7,6 +7,7 @@
   "author": "Anthonny Quérouil (anthonny.querouil@gmail.com)",
   "license": "MIT",
   "devDependencies": {
+    "bower": "~1.2.8",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-string-replace": "~0.2.7",
