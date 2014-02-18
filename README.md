@@ -1,4 +1,4 @@
-# angular-asciidoc-directive
+# angular-asciidoc-directive [![build status](https://api.travis-ci.org/anthonny/angular-asciidoc-directive.png)](https://travis-ci.org/anthonny/angular-asciidoc-directive)
 
 ## Usage
 1. `bower install angular-asciidoc-directive`
