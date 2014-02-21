@@ -11,26 +11,47 @@
 			restrict: 'AE', // E = Element, A = Attribute, C = Class, M = Comment header_footer
 			link: function(scope, element, attrs) {
  				var options;
- 				var transform = function(){};
+ 				var transform;
+ 				var nowatch;
+ 				var watch;
 
  				// If options are define
 				if (attrs.asciidocOpts) {
 					options = scope.$eval(attrs.asciidocOpts);
 				}
 
- 				// If a transformer is define, use to complete link href or image src fro example
- 				if (attrs.asciidocTransformer) {
- 					transform = scope.$eval(attrs.asciidocTransformer);
- 				}
+				// If nowatch is define
+				if (attrs.asciidocNoWatch) {
+					nowatch = scope.$eval(attrs.asciidocNoWatch);
+				}
 
 				if (attrs.asciidoc) {
-					scope.$watch(attrs.asciidoc, function (newVal) {
-			            var html = newVal ? Opal.Asciidoctor.$render(newVal, options) : '';
-			            element.html(html);
-			            transform(element);
+					watch = scope.$watch(attrs.asciidoc, function (newVal) {
+						if (newVal) {
+				            var html = newVal ? Opal.Asciidoctor.$render(newVal, options) : '';
+				            element.html(html);
+
+				            // If a transformer is define, use to complete link href or image src for example
+			 				if (attrs.asciidocTransformer) {
+			 					transform = scope.$eval(attrs.asciidocTransformer);
+			 					transform(element);
+			 				}
+
+			 				// Stop watching value
+			 				if (nowatch) {
+				            	watch();
+				            }	
+				            
+						}
 			          });
-				} else {
+				} else {		
 					element.html(Opal.Asciidoctor.$render(element.text(), options));
+
+		            // If a transformer is define, use to complete link href or image src for example
+	 				if (attrs.asciidocTransformer) {
+	 					transform = scope.$eval(attrs.asciidocTransformer);
+	 					transform(element);
+	 				}
 				}
 
 			}

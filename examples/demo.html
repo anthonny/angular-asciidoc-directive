@@ -25,9 +25,9 @@
 	</style>
 </head>
 <body data-ng-app="demo">
-	<div class="pure-g-r" ng-controller="demo as demo">	
+	<div class="pure-g-r" ng-controller="demo as demo" ng-init="demo.readonly=true">	
 		<div ui-ace="demo.aceOption" ng-model="demo.ascii" class="pure-u-1-2" ></div>
-		<div asciidoc="demo.ascii" asciidoc-opts="demo.asciidocOpts" asciidoc-transformer="demo.asciiTransformer" class="viewer" ></div>
+		<div asciidoc="demo.ascii" asciidoc-opts="demo.asciidocOpts" asciidoc-no-watch="demo.readonly" asciidoc-transformer="demo.asciiTransformer" class="viewer" ></div>
 	</div>
 
 	<script src="../bower_components/ace-builds/src-min-noconflict/ace.js"></script>
