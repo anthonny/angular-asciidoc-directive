@@ -21,14 +21,21 @@ describe('Asciidoc Directive', function () {
 		$scope = $rootScope.$new();
 		$scope.asciidocOpts = Opal.hash2(['options'], {'header_footer': true});
 
-		element = angular.element("<div asciidoc='asciiModel' asciidoc-opts='asciidocOpts'> </div>");
+		$scope.asciiTransformer = function(element) {
+			element.append('<p>Transformed</p>');
+			return element;
+		}
+
+
+		element = angular.element("<div asciidoc='asciiModel' asciidoc-opts='asciidocOpts' asciidoc-transformer='asciiTransformer'> </div>");
 		$compile(element)($scope);
 	}));
 
 	listTest.push({
 		element: 'h1',
 		asciival: '= Test',
-		expect: '<h1>Test</h1>\n'
+		expect: '<h1>Test</h1>\n'+
+				'<p>Transformed</p>'
 	});
 
 	listTest.push({
@@ -38,7 +45,8 @@ describe('Asciidoc Directive', function () {
 				'<h2 id="_test">Test</h2>\n' +
 				'<div class="sectionbody">\n\n' +
 				'</div>\n'+
-				'</div>\n\n'
+				'</div>\n\n'+
+				'<p>Transformed</p>'
 	});
 
 	listTest.push({
@@ -46,7 +54,8 @@ describe('Asciidoc Directive', function () {
 		asciival: 'Paragraph',
 		expect: '<div class="paragraph">\n'+
 				'<p>Paragraph</p>\n' +
-				'</div>\n\n'
+				'</div>\n\n'+
+				'<p>Transformed</p>'
 	});
 
 	listTest.forEach(function(test) {
