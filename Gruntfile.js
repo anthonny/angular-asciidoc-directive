@@ -22,6 +22,13 @@ module.exports = function(grunt) {
         },
       }
     },
+    uglify: {
+      dist: {
+        files: {
+          'tmp/asciidoctorjs/dist/uglify.js': ['tmp/asciidoctorjs/dist/opal.js', 'tmp/asciidoctorjs/dist/asciidoctor.js']
+        }
+      }
+    },
     concat: {
       options: {
         stripBanners: true,
@@ -36,8 +43,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           // Do not change order
-          'tmp/asciidoctorjs/dist/opal.js',
-          'tmp/asciidoctorjs/dist/asciidoctor.js',
+          'tmp/asciidoctorjs/dist/uglify.js',
           'src/<%= pkg.file %>.js',
         ],
         dest: 'dist/<%= pkg.file %>.all.js',
@@ -88,13 +94,14 @@ module.exports = function(grunt) {
   // 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-karma');
 
   // Default task(s).
   grunt.registerTask('default', ['dist']);
-  grunt.registerTask('dist', ['clean', 'string-replace', 'concat', 'copy']);// Default task.
+  grunt.registerTask('dist', ['clean', 'string-replace', 'uglify', 'concat', 'copy']);// Default task.
   grunt.registerTask('test', ['dist', 'karma']);
 
 };
