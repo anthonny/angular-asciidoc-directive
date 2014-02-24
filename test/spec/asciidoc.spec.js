@@ -21,13 +21,13 @@ describe('Asciidoc Directive', function () {
 		$scope = $rootScope.$new();
 		$scope.asciidocOpts = Opal.hash2(['options'], {'header_footer': true});
 
-		$scope.asciiTransformer = function(element) {
+		$scope.asciiPostProcessor = function(element) {
 			element.append('<p>Transformed</p>');
 			return element;
 		}
 
 
-		element = angular.element("<div asciidoc='asciiModel' asciidoc-opts='asciidocOpts' asciidoc-transformer='asciiTransformer'> </div>");
+		element = angular.element("<div asciidoc='asciiModel' asciidoc-opts='asciidocOpts' asciidoc-post-processor='asciiPostProcessor'> </div>");
 		$compile(element)($scope);
 	}));
 

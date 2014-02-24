@@ -24,7 +24,7 @@ angular.module('demo', ['aql.asciidoc', 'ui.ace'])
 	var urlImages = 'https://raw2.github.com/asciidoctor/asciidoctor.js/master/examples/';
 	var urlLink = 'https://github.com/Nikku/asciidoc-samples/blob/master/';
 
-	app.asciiTransformer = function(element) {
+	app.asciiPostProcessor = function(element) {
 		element.find('a').not('[href^="http"]').each(function() {
 			var el = angular.element(this)
 			var href = el.attr('href');

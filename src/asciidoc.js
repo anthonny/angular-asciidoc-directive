@@ -32,8 +32,8 @@
 				            element.html(html);
 
 				            // If a transformer is define, use to complete link href or image src for example
-			 				if (attrs.asciidocTransformer) {
-			 					transform = scope.$eval(attrs.asciidocTransformer);
+			 				if (attrs.asciidocPostProcessor) {
+			 					transform = scope.$eval(attrs.asciidocPostProcessor);
 			 					transform(element);
 			 				}
 
@@ -48,8 +48,8 @@
 					element.html(Opal.Asciidoctor.$render(element.text(), options));
 
 		            // If a transformer is define, use to complete link href or image src for example
-	 				if (attrs.asciidocTransformer) {
-	 					transform = scope.$eval(attrs.asciidocTransformer);
+	 				if (attrs.asciidocPostProcessor) {
+	 					transform = scope.$eval(attrs.asciidocPostProcessor);
 	 					transform(element);
 	 				}
 				}
