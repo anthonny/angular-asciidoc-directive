@@ -1,23 +1,20 @@
 'use strict';
 
-angular.module('demo', ['aql.asciidoc', 'ui.ace'])
+angular.module('demo', ['aql.asciidoc', 'ui.ace', 'aql.directives.dropfile'])
 
 // Define Opal attributes and options
 .constant('asciidocOpts', Opal.hash2(['options'], {'header_footer': true}))
 
-.controller('demo', ['asciidocOpts', '$http', function(asciidocOpts, $http){
+.controller('demo', ['asciidocOpts', function(asciidocOpts){
 	var app = this;
-
-	$http({method: 'GET', url: 'demo.asciidoc'}).
-		success(function(data, status, headers, config) {
-			app.ascii = data;
-	  	});
-
 
 	app.asciidocOpts = asciidocOpts;
 
+	app.ascii= '== Write some text or drop an AsciiDoc file in editor area\n';
+	app.ascii+= '= <-';
+
 	/**
-	 * Define transforme to change html generated with asciidoc
+	 * Define Post processor to change html generated with asciidoc
 	 * @param  {angular.element} element [description]
 	 * @return {html} html updated
 	 */
@@ -45,4 +42,19 @@ angular.module('demo', ['aql.asciidoc', 'ui.ace'])
 		theme:'terminal',
 		mode: 'asciidoc'
 	}
+
+
+
+	app.onDragOver = function(event) {
+		console.log(event);
+	};
+
+	app.onDragEnter = function(event) {
+		console.log(event);
+	};
+
+	app.onDragLeave = function(event) {
+		console.log(event);
+	};
+
 }]);
