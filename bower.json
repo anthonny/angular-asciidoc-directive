@@ -26,6 +26,7 @@
     "angular-scenario": ">=1.2.6",
     "angular-ui-ace": "bower",
     "jquery": "~2.1.0",
-    "sizzle": "~1.10.16"
+    "sizzle": "~1.10.16",
+    "angular-dropfile-directive": "https://github.com/anthonny/angular-dropfile-directive.git#master"
   }
 }
