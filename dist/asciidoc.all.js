@@ -1,5 +1,5 @@
 /*!
- angular-asciidoc-directive - v0.0.1 - 2014-02-24 
+ angular-asciidoc-directive - v0.0.1 - 2014-03-18 
 
 ======================================= 
 opal version : 0.5.5 
@@ -45,10 +45,10 @@ return null==a&&(a=e),a["$[]"](i(0,1,!1))},j._s=m,j),c).call(d).$to_set()),a.cde
 				if (attrs.asciidoc) {
 					watch = scope.$watch(attrs.asciidoc, function (newVal) {
 						if (newVal) {
-				            var html = newVal ? Opal.Asciidoctor.$render(newVal, options) : '';
+				            var html = Opal.Asciidoctor.$render(newVal, options);
 				            element.html(html);
 
-				            // If a transformer is define, use to complete link href or image src for example
+				            // If a postProcessor is define, use to complete link href or image src for example
 			 				if (attrs.asciidocPostProcessor) {
 			 					transform = scope.$eval(attrs.asciidocPostProcessor);
 			 					transform(element);
@@ -64,7 +64,7 @@ return null==a&&(a=e),a["$[]"](i(0,1,!1))},j._s=m,j),c).call(d).$to_set()),a.cde
 				} else {		
 					element.html(Opal.Asciidoctor.$render(element.text(), options));
 
-		            // If a transformer is define, use to complete link href or image src for example
+		            // If a postProcessor is define, use to complete link href or image src for example
 	 				if (attrs.asciidocPostProcessor) {
 	 					transform = scope.$eval(attrs.asciidocPostProcessor);
 	 					transform(element);

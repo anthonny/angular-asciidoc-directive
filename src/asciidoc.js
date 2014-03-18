@@ -28,10 +28,10 @@
 				if (attrs.asciidoc) {
 					watch = scope.$watch(attrs.asciidoc, function (newVal) {
 						if (newVal) {
-				            var html = newVal ? Opal.Asciidoctor.$render(newVal, options) : '';
+				            var html = Opal.Asciidoctor.$render(newVal, options);
 				            element.html(html);
 
-				            // If a transformer is define, use to complete link href or image src for example
+				            // If a postProcessor is define, use to complete link href or image src for example
 			 				if (attrs.asciidocPostProcessor) {
 			 					transform = scope.$eval(attrs.asciidocPostProcessor);
 			 					transform(element);
@@ -47,7 +47,7 @@
 				} else {		
 					element.html(Opal.Asciidoctor.$render(element.text(), options));
 
-		            // If a transformer is define, use to complete link href or image src for example
+		            // If a postProcessor is define, use to complete link href or image src for example
 	 				if (attrs.asciidocPostProcessor) {
 	 					transform = scope.$eval(attrs.asciidocPostProcessor);
 	 					transform(element);

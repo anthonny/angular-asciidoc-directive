@@ -1,35 +1,54 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // Init grunt configuration
   grunt.initConfig({
+    // Read package configuration
     pkg: grunt.file.readJSON('package.json'),
+
+    // Define clean task
+    clean: {
+      options: {
+        dot: true
+      },
+      dist: ['tmp', 'dist/*']
+    },
+
+    // Define string-replace task
     'string-replace': {
       options: {
-        replacements: [
-        {
+        // replace $inject by $opalInject
+        replacements: [{
           pattern: /(\$inject)/ig,
           replacement: '\$opalInject'
-        }, 
+        },
+        // replace $scope by $opalScope
         {
           pattern: /(\$scope)/ig,
           replacement: '\$opalScope'
-        }
-        ]
-      },     
+        }]
+      },
       dist: {
         files: {
           'tmp/': ['asciidoctorjs/dist/*.js']
-        },
-      }
-    },
-    uglify: {
-      dist: {
-        files: {
-          'tmp/asciidoctorjs/dist/uglify.js': ['tmp/asciidoctorjs/dist/opal.js', 'tmp/asciidoctorjs/dist/asciidoctor.js']
         }
       }
     },
+
+    // Define uglify task
+    uglify: {
+      dist: {
+        files: {
+          'tmp/asciidoctorjs/dist/uglify.js': [
+          'tmp/asciidoctorjs/dist/opal.js',
+          'tmp/asciidoctorjs/dist/asciidoctor.js'
+          ]
+        }
+      }
+    },
+
+    // Define concat task
     concat: {
+      
       options: {
         stripBanners: true,
         banner: '/*!\n <%= pkg.name %> - v<%= pkg.version %> - ' +
@@ -42,56 +61,37 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          // Do not change order
-          'tmp/asciidoctorjs/dist/uglify.js',
-          'src/<%= pkg.file %>.js',
+        'tmp/asciidoctorjs/dist/uglify.js',
+        'src/asciidoc.js'
         ],
-        dest: 'dist/<%= pkg.file %>.all.js',
-      },
+        dest: 'dist/asciidoc.all.js'
+      }
     },
 
-    // Empties folders to start fresh
-    clean: {
+    // Define copy task
+    copy: {
       dist: {
         files: [{
-          dot: true,
-          src: [
-            'tmp',
-            'dist/*',
-          ]
+          expand: true,
+          cwd: 'asciidoctorjs/examples/',
+          src: ['*.css'],
+          dest: 'dist/',
+          filter: 'isFile'
         }]
       }
     },
-    copy: {
-      main: {
-        files: [
-          // includes files within path
-          {
-            expand: true, 
-            cwd: 'asciidoctorjs/examples/',
-            src: [
-              '*.css',
-              '!*.js',
-              '!*.html',
-              '!*.rb'
-              ], 
-            dest: 'dist/',
-            filter: 'isFile'
-          }
-        ]
-      }
-    },
-    // Test settings
+
+    // Define Karma task
     karma: {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
       }
     }
+
   });
 
-  // Load the plugin that provides the "uglify" task.
-  // 
+  // Load tasks 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-string-replace');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -99,9 +99,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-karma');
 
-  // Default task(s).
+  // Define defaults task
   grunt.registerTask('default', ['dist']);
-  grunt.registerTask('dist', ['clean', 'string-replace', 'uglify', 'concat', 'copy']);// Default task.
+  grunt.registerTask('dist', ['clean', 'string-replace', 'uglify', 'concat', 'copy']);
   grunt.registerTask('test', ['dist', 'karma']);
 
 };
