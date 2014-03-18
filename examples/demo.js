@@ -18,8 +18,8 @@ angular.module('demo', ['aql.asciidoc', 'ui.ace', 'aql.directives.dropfile'])
 	 * @param  {angular.element} element [description]
 	 * @return {html} html updated
 	 */
-	var urlImages = 'https://raw2.github.com/asciidoctor/asciidoctor.js/master/examples/';
-	var urlLink = 'https://github.com/Nikku/asciidoc-samples/blob/master/';
+	var urlImages = 'https://raw.github.com/asciidoctor/asciidoctor.js/master/examples/';
+	var urlLink = 'https://github.com/opendevise/asciidoc-samples/blob/master/';
 
 	app.asciiPostProcessor = function(element) {
 		element.find('a').not('[href^="http"]').each(function() {
