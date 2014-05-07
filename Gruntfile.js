@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'tmp/': ['asciidoctorjs/dist/*.js']
+          'tmp/': ['bower_components/asciidoctor.js/dist/*.js']
         }
       }
     },
@@ -39,8 +39,9 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'tmp/asciidoctorjs/dist/uglify.js': [
-          'tmp/asciidoctorjs/dist/opal.js',
-          'tmp/asciidoctorjs/dist/asciidoctor.js'
+          'tmp/bower_components/asciidoctor.js/dist/opal.js',
+          'tmp/bower_components/asciidoctor.js/dist/asciidoctor.js',
+          'tmp/bower_components/asciidoctor.js/dist/asciidoctor_extensions.js'
           ]
         }
       }
@@ -73,7 +74,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'asciidoctorjs/examples/',
+          cwd: 'bower_components/asciidoctor.js/examples/',
           src: ['*.css'],
           dest: 'dist/',
           filter: 'isFile'

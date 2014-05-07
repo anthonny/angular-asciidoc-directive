@@ -27,7 +27,8 @@
     "angular-ui-ace": "bower",
     "jquery": "~2.1.0",
     "sizzle": "~1.10.16",
-    "angular-dropfile-directive": "https://github.com/anthonny/angular-dropfile-directive.git#master"
+    "angular-dropfile-directive": "https://github.com/anthonny/angular-dropfile-directive.git#master",
+    "asciidoctor.js": "https://github.com/anthonny/asciidoctor.js.git#1.5.0-preview4"
   },
   "resolutions": {
     "angular": ">=1.2.6"

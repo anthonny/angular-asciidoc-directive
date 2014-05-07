@@ -45,7 +45,7 @@ describe('Asciidoc Directive', function () {
 				'<h2 id="_test">Test</h2>\n' +
 				'<div class="sectionbody">\n\n' +
 				'</div>\n'+
-				'</div>\n\n'+
+				'</div>'+
 				'<p>Transformed</p>'
 	});
 
@@ -54,7 +54,7 @@ describe('Asciidoc Directive', function () {
 		asciival: 'Paragraph',
 		expect: '<div class="paragraph">\n'+
 				'<p>Paragraph</p>\n' +
-				'</div>\n\n'+
+				'</div>'+
 				'<p>Transformed</p>'
 	});
 
