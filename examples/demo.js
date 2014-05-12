@@ -22,10 +22,18 @@ angular.module('demo', ['aql.asciidoc', 'ui.ace', 'aql.directives.dropfile'])
 	var urlLink = 'https://github.com/opendevise/asciidoc-samples/blob/master/';
 
 	app.asciiPostProcessor = function(element) {
-		element.find('a').not('[href^="http"]').each(function() {
+		element.find('a').not('[href^="http"]').not('[href^="#"]').each(function() {
 			var el = angular.element(this)
 			var href = el.attr('href');
 			el.attr('href', urlLink+href)
+		});
+
+		element.find('a[href^="#"]').each(function() {
+			var el = angular.element(this);
+			el.on('click', function(){
+				$location.hash(el.attr('href'));
+      	$anchorScroll();
+			});
 		});
 
 		element.find('img').not('[src^="http"]').each(function() {
