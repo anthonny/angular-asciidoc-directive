@@ -1,6 +1,6 @@
 'use strict';
 describe('Asciidoc Directive', function () {
-	
+
 	var element;
 	var $scope;
 	var listTest=[];
@@ -19,7 +19,7 @@ describe('Asciidoc Directive', function () {
 	//
 	beforeEach(inject(function ($compile, $rootScope) {
 		$scope = $rootScope.$new();
-		$scope.asciidocOpts = Opal.hash2(['options'], {'header_footer': true});
+		$scope.asciidocOpts = Opal.hash2(['attributes'], {'attributes': 'showtitle'});
 
 		$scope.asciiPostProcessor = function(element) {
 			element.append('<p>Transformed</p>');
