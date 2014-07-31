@@ -28,7 +28,7 @@
 				if (attrs.asciidoc) {
 					watch = scope.$watch(attrs.asciidoc, function (newVal) {
 						if (newVal) {
-				            var html = Opal.Asciidoctor.$render(newVal, options);
+				            var html = Opal.Asciidoctor.$convert(newVal, options);
 				            element.html(html);
 
 				            // If a postProcessor is define, use to complete link href or image src for example
@@ -40,11 +40,11 @@
 			 				// Stop watching value
 			 				if (nowatch) {
 				            	watch();
-				            }	
-				            
+				            }
+
 						}
 			          });
-				} else {		
+				} else {
 					element.html(Opal.Asciidoctor.$render(element.text(), options));
 
 		            // If a postProcessor is define, use to complete link href or image src for example

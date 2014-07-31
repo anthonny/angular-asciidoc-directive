@@ -29,27 +29,14 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'tmp/': ['bower_components/asciidoctor.js/dist/*.js']
-        }
-      }
-    },
-
-    // Define uglify task
-    uglify: {
-      dist: {
-        files: {
-          'tmp/asciidoctorjs/dist/uglify.js': [
-          'tmp/bower_components/asciidoctor.js/dist/opal.js',
-          'tmp/bower_components/asciidoctor.js/dist/asciidoctor.js',
-          'tmp/bower_components/asciidoctor.js/dist/asciidoctor_extensions.js'
-          ]
+          'tmp/': ['bower_components/asciidoctor.js/dist/asciidoctor-all.min.js']
         }
       }
     },
 
     // Define concat task
     concat: {
-      
+
       options: {
         stripBanners: true,
         banner: '/*!\n <%= pkg.name %> - v<%= pkg.version %> - ' +
@@ -62,7 +49,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-        'tmp/asciidoctorjs/dist/uglify.js',
+        'tmp/bower_components/asciidoctor.js/dist/asciidoctor-all.min.js',
         'src/asciidoc.js'
         ],
         dest: 'dist/asciidoc.all.js'
@@ -92,17 +79,16 @@ module.exports = function(grunt) {
 
   });
 
-  // Load tasks 
+  // Load tasks
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-string-replace');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-karma');
 
   // Define defaults task
   grunt.registerTask('default', ['dist']);
-  grunt.registerTask('dist', ['clean', 'string-replace', 'uglify', 'concat', 'copy']);
+  grunt.registerTask('dist', ['clean', 'string-replace', 'concat', 'copy']);
   grunt.registerTask('test', ['dist', 'karma']);
 
 };

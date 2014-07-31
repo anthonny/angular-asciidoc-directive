@@ -1,6 +1,6 @@
 {
   "name": "angular-asciidoc-directive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AngularJS directive for AsciiDoctor",
   "main": "asciidoc.js",
   "file": "asciidoc",
@@ -24,8 +24,7 @@
     "karma": "~0.10.9",
     "karma-ng-scenario": "~0.1.0",
     "grunt-karma": "~0.6.2",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-uglify": "^0.3.2"
+    "grunt-contrib-copy": "~0.5.0"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -36,6 +35,6 @@
   "asciidoc": {
     "opal": "0.6.2",
     "opalsprockets": "0.3.0",
-    "asciidoctor": "1.5.0-preview.7"
+    "asciidoctor": "1.5.0-rc.2"
   }
 }
