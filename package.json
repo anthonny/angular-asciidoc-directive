@@ -1,6 +1,6 @@
 {
   "name": "angular-asciidoc-directive",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "AngularJS directive for AsciiDoctor",
   "main": "asciidoc.js",
   "file": "asciidoc",
@@ -36,6 +36,6 @@
   "asciidoc": {
     "opal": "0.6.2",
     "opalsprockets": "0.3.0",
-    "asciidoctor": "1.5.0-rc.2"
+    "asciidoctor": "1.5.1"
   }
 }
