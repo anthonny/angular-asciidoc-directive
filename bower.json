@@ -29,5 +29,8 @@
     "sizzle": "~1.10.16",
     "angular-dropfile-directive": "https://github.com/anthonny/angular-dropfile-directive.git#master",
     "asciidoctor.js": "v1.5.1"
+  },
+  "resolutions": {
+    "angular": ">=1.2.6"
   }
 }
