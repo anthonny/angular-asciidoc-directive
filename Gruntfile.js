@@ -25,6 +25,11 @@ module.exports = function(grunt) {
         {
           pattern: /(\$scope)/ig,
           replacement: '\$opalScope'
+        },
+        // replace inject by opalInject
+        {
+          pattern: /(\inject)/g,
+          replacement: '\opalInject'
         }]
       },
       dist: {
