@@ -34,8 +34,7 @@
     "test": "grunt test"
   },
   "asciidoc": {
-    "opal": "0.6.2",
-    "opalsprockets": "0.3.0",
-    "asciidoctor": "1.5.1"
+    "opal": "0.9.0.beta2",
+    "asciidoctor": "1.5.5-1"
   }
 }

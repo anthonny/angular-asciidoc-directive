@@ -48,7 +48,6 @@ module.exports = function(grunt) {
         '<%= grunt.template.today("yyyy-mm-dd") %> \n\n' +
         '======================================= \n' +
         'opal version : <%= pkg.asciidoc.opal %> \n' +
-        'opal-sprockets version : <%= pkg.asciidoc.opalsprockets %> \n' +
         'asciidoctor version : <%= pkg.asciidoc.asciidoctor %> \n' +
         '*/\n\n',
       },

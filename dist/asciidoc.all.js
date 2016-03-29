@@ -2,9 +2,8 @@
  angular-asciidoc-directive - v0.2.0 - 2016-03-29 
 
 ======================================= 
-opal version : 0.6.2 
-opal-sprockets version : 0.3.0 
-asciidoctor version : 1.5.1 
+opal version : 0.9.0.beta2 
+asciidoctor version : 1.5.5-1 
 */
 
 (function(a){function n(a,e,h){var b=function(){},v=b.prototype=new a.constructor;e.$$opalScope=v;e.$$base_module=a.base;v.base=e;v.constructor=b;v.constants=[];h&&z.cdecl(a,h,e)}function q(a,e){var h=b(null,e,a);return l(a,h)}function l(a,e){function h(){}var b=function(){};b.prototype=a.constructor.prototype;h.prototype=new b;b=new h;f(b,h,a,e.prototype);b.$$alloc=e;return b.$$proto.$$class=b}function f(a,e,h,b){a.$$id=z.uid();a.$$proto=b;a.constructor=e;h===v?(a.$$is_module=!0,a.$$class=v):(a.$$is_class=
